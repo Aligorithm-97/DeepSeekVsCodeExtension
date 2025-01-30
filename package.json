@@ -39,6 +39,7 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "ollama": "^0.5.12"
+    "ollama": "^0.5.12",
+    "vscode": "^1.1.37"
   }
 }
