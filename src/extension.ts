@@ -45,40 +45,104 @@ export function activate(context: vscode.ExtensionContext) {
 function getWebviewContent(): string {
   return /*html*/ `
   <!DOCTYPE html>
-  <html lang="en">
-  <head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
-  <style> 
-body {font-family:sans-serif;margin:1rem;}
-#prompt {width:100%;box-sizing:border-box;}
-#response {border:1px solid #ccc; margin-top:1rem;padding:0.5rem}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep VsCode</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+    h2 {
+      color: black;
+      margin-bottom: 1rem;
+    }
+    #prompt {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: none;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    #deepBtn {
+      margin-top: 10px;
+      width: 100%;
+      padding: 12px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #deepBtn:hover {
+      background-color: #005fa3;
+    }
+    #response {
+      margin-top: 1rem;
+      padding: 10px;
+      background: #eef2ff;
+      color:black;
+      border-radius: 5px;
+      border-left: 4px solid #007acc;
+      text-align: left;
+      font-size: 1rem;
+      white-space: pre-wrap;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
-	</head>
-	<body>
-		<h2>Deep VsCode</h2>
-		<textarea id="prompt" rows="3" placeholder="..."></textarea><br/>
-		<button id="deepBtn">Send</button>
-		<div id="response"></div>
-	</body>
+</head>
+<body>
+  <div class="container">
+    <h2>Deep VsCode</h2>
+    <textarea id="prompt" placeholder="Type your message..."></textarea>
+    <button id="deepBtn">Send</button>
+    <div id="response">Waiting for response...</div>
+  </div>
 
-	<script>
-		const vscode = acquireVsCodeApi();
+  <script>
+    const vscode = acquireVsCodeApi();
 
-		document.getElementById('deepBtn').addEventListener('click',()=>{
-			const text = document.getElementById('prompt').value;
-			vscode.postMessage({command:'chat',text});
+    document.getElementById('deepBtn').addEventListener('click', () => {
+      const text = document.getElementById('prompt').value;
+      document.getElementById('response').innerText = "Processing...";
+      vscode.postMessage({ command: 'chat', text });
+    });
 
-		})
+    window.addEventListener('message', (event) => {
+      const { command, text } = event.data;
+      if (command === 'chatResponse') {
+        document.getElementById('response').innerText = text;
+      }
+    });
+  </script>
+</body>
+</html>
 
-		window.addEventListener('message',event=>{
-			const {command,text} = event.data;
-			if(command==='chatResponse'){
-				document.getElementById('response').innerText= text;
-			}
-		})
-
-	</script>
-  <html>
   `;
 }
 
