@@ -3,7 +3,7 @@ import ollama from "ollama";
 
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
-    "deepvscode.helloWorld",
+    "deepvscode.deepVsCode",
     () => {
       const panel = vscode.window.createWebviewPanel(
         "deepVsCode",

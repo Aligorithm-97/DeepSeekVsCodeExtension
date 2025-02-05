@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "deepvscode.helloWorld",
-        "title": "Hello World"
+        "command": "deepvscode.deepVsCode",
+        "title": "DeepVsCode"
       }
     ]
   },

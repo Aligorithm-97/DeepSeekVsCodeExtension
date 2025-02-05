@@ -41,7 +41,7 @@ exports.deactivate = deactivate;
 const vscode = __importStar(require("vscode"));
 const ollama_1 = __importDefault(require("ollama"));
 function activate(context) {
-    const disposable = vscode.commands.registerCommand("deepvscode.helloWorld", () => {
+    const disposable = vscode.commands.registerCommand("deepvscode.deepVsCode", () => {
         const panel = vscode.window.createWebviewPanel("deepVsCode", "Deep Seek VsCode", vscode.ViewColumn.One, { enableScripts: true });
         panel.webview.html = getWebviewContent();
         panel.webview.onDidReceiveMessage(async (message) => {
