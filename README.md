@@ -1,71 +1,67 @@
-# deepvscode README
+# Deep Seek VSCode Extension
 
-This is the README for your extension "deepvscode". After writing up a brief description, we recommend including the following sections.
+## Overview
+
+Deep Seek VSCode is a Visual Studio Code extension that integrates the Ollama API to provide AI-powered chat capabilities directly within the editor. This extension allows users to send prompts and receive responses in real time using the `deepseek-r1:8b` model.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- AI-powered chat inside VSCode
+- Streamed responses for real-time interaction
+- Simple and user-friendly UI
+- Easy installation and activation
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+### Prerequisites
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- [Node.js](https://nodejs.org/) installed on your system
+- VSCode installed
 
-## Requirements
+### Steps
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Clone the repository:
 
-## Extension Settings
+   ```sh
+   git clone <repository-url>
+   cd deepseek-vscode
+   ```
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+2. Install dependencies:
 
-For example:
+   ```sh
+   npm install
+   ```
 
-This extension contributes the following settings:
+3. Open the project in VSCode and run the extension:
+   ```sh
+   code .
+   npm run compile
+   npm run start
+   ```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Usage
 
-## Known Issues
+1. Open VSCode.
+2. Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS).
+3. Run `Deep Seek VsCode` to open the chat UI.
+4. Type your message and click the `Send` button.
+5. Receive and view the AI-generated response in real time.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Development
 
-## Release Notes
+To modify or enhance the extension:
 
-Users appreciate release notes as you update your extension.
+- Edit `src/extension.ts` for backend logic.
+- Modify the `getWebviewContent()` function to update the UI.
+- Use `npm run watch` for live development.
 
-### 1.0.0
+## Dependencies
 
-Initial release of ...
+- [VSCode API](https://code.visualstudio.com/api)
+- [Ollama](https://ollama.com)
+- [TypeScript](https://www.typescriptlang.org/)
 
-### 1.0.1
+## License
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the MIT License.
